@@ -1,0 +1,48 @@
+<div class="displacements-container">
+  <span *ngIf="days.length === 0">No hay días definidos</span>
+  <mat-card *ngFor="let day of days; let i = index">
+    <mat-card-header>
+      <mat-card-title>Día {{ i + 1 }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="displacements-day">
+      <span *ngIf="day.appointments.length === 0">No hay citas definidas</span>
+      <mat-form-field
+        appearance="outline"
+        *ngFor="
+          let appointment of day.appointments;
+          let appoinmentIndex = index
+        "
+      >
+        <mat-label>Localización</mat-label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="appointment.location"
+          (change)="onChangeLocation(day, appoinmentIndex, $event)"
+        />
+        <mat-hint class="displacements-addressName">{{
+          appointment.name
+        }}</mat-hint>
+      </mat-form-field>
+      <button
+        class="displacements-addAppointmentButton"
+        mat-mini-fab
+        color="primary"
+        (click)="day.appointments.push({ location: '' })"
+      >
+        <mat-icon fontIcon="add"></mat-icon>
+      </button>
+    </mat-card-content>
+  </mat-card>
+  <button
+    class="displacements-addDayButton"
+    mat-fab
+    color="primary"
+    (click)="days.push({ appointments: [{ location: '' }] })"
+  >
+    <mat-icon fontIcon="add"></mat-icon>
+  </button>
+
+  <div class="displacements-totalDistance">{{ totalDistance }} Km</div>
+</div>

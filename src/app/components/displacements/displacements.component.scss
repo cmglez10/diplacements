@@ -1,0 +1,45 @@
+.displacements {
+  &-container {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem;
+  }
+
+  &-day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem;
+    min-width: 20rem;
+  }
+
+  &-addDayButton {
+    align-self: center;
+  }
+
+  &-addAppointmentButton {
+    align-self: center;
+  }
+
+  &-addressName {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &-totalDistance {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    color: white;
+    background-color: #673ab7;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem #673ab7;
+  }
+}
